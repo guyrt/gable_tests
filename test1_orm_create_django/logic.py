@@ -12,7 +12,7 @@ class DocumentClusterCreateShareView(LoginRequiredMixin, View):
     def post(self, request, pk):
         obj = get_object_or_404(DocumentCluster, active=True, owner=self.request.user, id=pk)
 
-        share_guid = f"{uuid4()}__{uuid4()}"
+        share_guid = f"{uuid4()}__{uuid4()}".replace("-", "")
         ShareRequest.objects.create(
             owner=self.request.user,
             shared_object='privateuploads.models.DocumentCluster',
