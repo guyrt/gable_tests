@@ -6,6 +6,7 @@ from kafka import KafkaProducer
 producer = KafkaProducer(bootstrap_servers='localhost:9092')
 
 def write_msg(name: str):
+    name = name.lower()
     for i in range(10):
         data = { 
             'tag ': 'blah',
